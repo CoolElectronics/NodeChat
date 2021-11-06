@@ -1,0 +1,193 @@
+#topbar {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(65, 60, 60);
+    width: 100%;
+    height: 90px;
+    top: 0px;
+    margin: 0px;
+    margin-top: 0px;
+    padding: 0px;
+    vertical-align: middle;
+}
+
+#titlecontainer {
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    background-color: rgb(83, 80, 80);
+    border-color: rgb(83, 80, 80);
+    border-width: 10px;
+    border-style: solid;
+}
+
+#controlpanel {
+    position: relative;
+    left: 60%;
+    top: 50%;
+    height: 76%;
+    transform: translate(0, -50%);
+    background-color: rgb(83, 80, 80);
+    border-color: rgb(83, 80, 80);
+    border-width: 10px;
+    border-style: solid;
+}
+
+#mainpanel {
+    position: absolute;
+    display: none;
+    height: 80%;
+    top: 12%;
+    left: 2%;
+    width: 60%;
+    background-color: rgb(83, 80, 80);
+    border-color: rgb(83, 80, 80);
+    border-width: 10px;
+    border-style: solid;
+}
+
+#chatcontainer {
+    position: relative;
+    top: 1%;
+    height: 90%;
+    width: 80%;
+    background-color: rgb(54, 52, 52);
+    border-color: rgb(54, 52, 52);
+    border-width: 10px;
+    border-style: solid;
+    overflow-y: scroll;
+}
+
+#userlistcontainer {
+    position: absolute;
+    width: 15%;
+    left: 83%;
+    top: 1%;
+    height: 90%;
+    background-color: rgb(54, 52, 52);
+    border-color: rgb(54, 52, 52);
+    border-width: 10px;
+    border-style: solid;
+    overflow-y: scroll;
+}
+
+#chatinputcontainer {
+    position: relative;
+    bottom: -4%;
+    width: 80%;
+    background-color: rgb(54, 52, 52);
+    border-color: rgb(54, 52, 52);
+    border-width: 6px;
+    border-style: solid;
+}
+
+#chatinput {
+    background-color: whitesmoke;
+    border: 0px solid black;
+    font-family: "Inter", sans-serif;
+    width: 90%;
+}
+
+#sendbutton {
+    text-align: center;
+    background-color: rgb(20, 220, 87);
+    font-family: "Inter", sans-serif;
+    color: black;
+    border: 0px;
+}
+
+#controlpaneltitle {
+    color: whitesmoke;
+    font-family: "Inter";
+}
+
+#userlisttitle {
+    background-color: rgb(121, 113, 113);
+    border-color: rgb(121, 113, 113);
+    border-width: 10px;
+    border-style: solid;
+    font-family: "Inter", sans-serif;
+    color: whitesmoke;
+    text-align: center;
+}
+
+.connecteduser {
+    font-family: "Inter", sans-serif;
+    color: whitesmoke;
+    text-align: center;
+}
+
+.message {
+    font-family: "Inter", sans-serif;
+    color: whitesmoke;
+}
+
+#usernamecontainer {
+    position: absolute;
+    top: 50%;
+    left: 500px;
+    transform: translate(0, -50%);
+    background-color: rgb(83, 80, 80);
+    border-color: rgb(83, 80, 80);
+    border-width: 10px;
+    border-radius: 0%;
+    border-style: solid;
+}
+
+#usernametext {
+    color: whitesmoke;
+    font-family: "Inter", sans-serif;
+}
+
+#usernameinput {
+    border: 0px solid black;
+}
+
+#connectcontainer {
+    position: absolute;
+    top: 50%;
+    left: 700px;
+    transform: translate(0, -50%);
+    background-color: rgb(83, 80, 80);
+    border-color: rgb(83, 80, 80);
+    border-width: 10px;
+    border-radius: 0%;
+    border-style: solid;
+}
+
+#connectedtext {
+    color: crimson;
+    font-family: "Inter", sans-serif;
+}
+
+#connectbutton {
+    text-align: center;
+    background-color: rgb(20, 220, 87);
+    width: 100%;
+    font-family: "Inter", sans-serif;
+    font-size: 15px;
+    color: black;
+    border: 0px;
+}
+
+textarea:focus,
+input:focus {
+    outline: none;
+}
+
+#title {
+    font-family: "Inter", sans-serif;
+    text-align: center;
+    font-size: x-large;
+}
+
+#desc {
+    color: whitesmoke;
+    font-family: "Inter", serif;
+}
+
+body {
+    margin: 0px;
+    background-color: rgb(24, 23, 23);
+}

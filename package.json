@@ -1,0 +1,26 @@
+{
+  "name": "nodechat",
+  "version": "1.0.0",
+  "description": "chat and game rooms",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CoolElectronics/NodeChat.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CoolElectronics/NodeChat/issues"
+  },
+  "homepage": "https://github.com/CoolElectronics/NodeChat#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "p5": "^1.4.0",
+    "sanitize": "^2.1.0",
+    "socket.io": "^4.3.1",
+    "uuid": "^8.3.2"
+  }
+}

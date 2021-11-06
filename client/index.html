@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>NodeChat</title>
+    <script src="client/libraries/socket.io.js" charset="utf-8"></script>
+    <script src="client/libraries/p5.min.js" charset="utf-8"></script>
+    <script src="client/main.js" charset="utf-8"></script>
+    <script src="client/libraries/sanitize.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter">
+    <link rel="stylesheet" href="client/index.css">
+</head>
+
+<body>
+    <div id='topbar'>
+        <div id='titlecontainer'>
+            <div id='title'>NodeChat main room (and only room)</div>
+            <div id='desc'>Welcome! have a look around, check out some features,<br> and connect when you're ready. Have fun!</div>
+        </div>
+        <div id='usernamecontainer'>
+            <div id='usernametext'>Username:</div>
+            <input id='usernameinput'>
+        </div>
+        <div id='connectcontainer'>
+            <div id='connectedtext'>NOT CONNECTED</div>
+            <button id='connectbutton'>Connect!</button>
+        </div>
+        <div id='controlpanel'>
+            <div id='controlpaneltitle'>
+                Client Control Panel (In development)
+            </div>
+        </div>
+    </div>
+    <div id='mainpanel'>
+        <div id='userlistcontainer'>
+            <div id='userlisttitle'>
+                Online Users:
+            </div>
+            <div id='userlistcontainercontainer'></div>
+        </div>
+        <div id='chatcontainer'>
+        </div>
+        <div id='chatinputcontainer'>
+            <input id='chatinput'>
+            <button id='sendbutton'>send</button>
+        </div>
+
+    </div>
+</body>
+
+</html>
