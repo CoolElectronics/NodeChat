@@ -72,7 +72,7 @@ io.on('connection', (socket) => {
     });
 });
 
-serv.listen(5000, () => {
+serv.listen(process.env.PORT || 5000, () => {
     console.log('listening on *:5000');
 });
 class ConnectedUser {
