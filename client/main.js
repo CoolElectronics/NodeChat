@@ -7,10 +7,21 @@ var connectedusers = [];
 
 var connected = false;
 var cansendnotifs = false;
+// i'll implement server authority when somebody breaks client authority
+var cansendmessage = true;
+var myguid;
 
 function preload() {}
 
 function setup() {
+    if (localStorage.getItem("guid") == null){
+        socket.emit("newguid");
+        console.log("newguid was called");
+    }else{
+        console.log("oldguid was called");
+        myguid = localStorage.getItem("guid");
+        socket.emit("oldguid",myguid);
+    }
     sanitizer = new Sanitize();
     createCanvas(70, 70);
 
@@ -26,8 +37,14 @@ function setup() {
             $("#sendbutton").click();
         }
     });
-}
+    $("#usernameinput").keyup(function(event) {
+        if (event.keyCode === 13) {
+            alert("nope");
+            window.location.replace("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
 
+        }
+    });
+}
 
 
 function connect(res) {
@@ -107,10 +124,16 @@ function sendmessage(res) {
     if (res == 406) {
         alert("the server didn't like your message. sorry");
     } else {
-        if (document.getElementById("chatinput").value != "") {
-            let message = document.getElementById("chatinput").value;
-            document.getElementById("chatinput").value = null;
-            socket.emit("sendmessage", message);
+        if (cansendmessage){
+            if (document.getElementById("chatinput").value != "") {
+                cansendmessage = false;
+                setTimeout(() => {cansendmessage = true},2000);
+                let message = document.getElementById("chatinput").value;
+                document.getElementById("chatinput").value = null;
+                socket.emit("sendmessage", message);
+            }
+        }else{
+            //alert("a 2 second slowmode has been implemented to prevent spam");
         }
     }
 
@@ -119,6 +142,61 @@ function sendmessage(res) {
 function sendalert(title, text) {
     if (!document.hasFocus()) {
         new Notification(title, { body: text });
+    }
+}
+function auth(res){
+    if (res != null){
+        switch (res){
+            case 200:
+                alert("authenticated sucessfully");
+                break;
+            case 400:
+                alert("incorrect auth key");
+                break;
+            case 406:
+                break;
+            case 201:
+                break;
+        }
+    }
+}
+function ban(res){
+    if (res != null){
+        switch (res){
+            case 200:
+                alert("banned user sucessfully");
+                break;
+            case 400:
+                alert("could not find user");
+                break;
+            case 406:
+                alert("this user is not authenticated. this incident will be reported.");
+                break;
+            case 201:
+                localStorage.setItem("banned","1");
+                socket.emit("banguid",myguid);
+
+                window.location.replace("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+                break;
+        }
+    }
+}
+function kick(res){
+    if (res != null){
+        switch (res){
+            case 200:
+                alert("banned user sucessfully");
+                break;
+            case 400:
+                alert("could not find user");
+                break;
+            case 406:
+                alert("this user is not authenticated. this incident will be reported.");
+                break;
+            case 201:
+                window.location.replace("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+                break;
+        }
     }
 }
 
@@ -138,6 +216,28 @@ socket.on("connect 400", () => connect(400));
 socket.on("users init", (userlist) => users("init", userlist));
 socket.on("users new", (user) => users("new", user));
 socket.on("users left", (user) => users("left", user));
+
+socket.on("auth 200", () => auth(200));
+socket.on("auth 400", () => auth(400));
+
+socket.on("ban 201", () => ban(201));
+socket.on("ban 200", () => ban(200));
+socket.on("ban 400", () => ban(400));
+socket.on("ban 406", () => ban(406));
+
+socket.on("kick 201", () => kick(201));
+socket.on("kick 200", () => kick(200));
+socket.on("kick 400", () => kick(400));
+socket.on("kick 406", () => kick(406));
+
+socket.on("guid", (guid) => {
+    myguid = guid;
+    localStorage.setItem("guid",myguid);
+});
+
+
+
+
 
 socket.on("message", (content, user) => message(content, user));
 socket.on("sendmessage 406", () => message(406));
